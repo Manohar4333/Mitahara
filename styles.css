@@ -41,7 +41,7 @@
     
     background-image: url('./images/banner1\ .jpg');
 
-    height: 550px;
+    height: 400px;
     width: 1300px;
 }
 
@@ -56,7 +56,7 @@
 }
 .why_us{
     background-color: #CAE09F;
-    margin-top: -150px;
+    margin-top: 100px;
 }
 .why-text{
     text-align: center;
@@ -65,3 +65,27 @@
 .why-content{
     font-weight: 400; 
 }
+
+.certified{
+    padding-top: 40px;
+}
+
+.categories{
+    margin-top: -200px;
+    /* background-color: black; */
+}
+.img-categories{
+    border-radius: 35px;
+    
+}
+
+.cat-name{
+    text-decoration: none;
+    color:#31541E;
+    align-items: center;
+}
+
+a{
+    text-align: center;
+}
+
