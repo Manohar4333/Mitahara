@@ -1,0 +1,36 @@
+.awards{
+    padding: 25px;
+    border: 1px #CAE09F;
+}
+
+.award-img{
+    
+}
+.award-img>img{
+    height: 400px;
+    margin-left: 300px;
+    box-shadow: 10px 5px 5px gray;
+}
+
+.award-content{
+    padding: 40px;
+}
+
+.flex-container{
+    display: flex;
+    padding: 30px;
+}
+.flex-item{
+
+}
+
+.flex-item>img{
+    height: 300px;
+}
+.flex-content{
+    background-color: #CAE09F;
+}
+.flex-content> h1,p{
+    margin-left: 30px;
+    margin-top: 15px;
+}
