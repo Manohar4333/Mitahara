@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            font-family: "roboto";
+            overflow-x: hidden;
+        }
+        .nav{
+           background-color:#CAE09F;
+           font-size: x-large;
+           font-optical-sizing: auto;
+           font-weight: 700;
+           display: flex;
+           position: sticky;
+           z-index: 100;
+           right:0px;
+           left:0px;
+           top:0px;
+           margin-left: -20px;
+           margin-top: -10px;
+        }  
+
+
+        .nav-item{
+         text-decoration: none;
+          color: black;
+          margin-top: 35px;
+          padding: 15px;
+          margin-left:60px;
+        }
+        .logo-img{
+          padding-right: 40px;
+     }
+        h1{
+         font-size:50px;
+          color:#31541e;
+        }
+        .card{
+            width:300px;
+            height:470px;
+            border:none;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius:25px;
+            box-shadow:5px 5px 5px 5px grey;
+            
+        }
+        .card:hover{
+           
+            transform:translatey(-20px);
+        }
+        .card-header>img{
+            width: 250px;
+            height: 200px;
+            padding:15px;
+            margin-left: 10px;
+            border-radius:20px;
+            
+        }
+        
+        
+        .menu{
+            display:flex;
+            justify-content:space-around;
+            width:1200px;
+            flex-wrap:wrap;
+            padding-left:150px; 
+        }
+        .btn-buy{
+            background-color: green;
+            color:white;
+            border:none;
+            font-weight: 900px;
+            width:100px;
+            height:50px;
+            border-radius:30px;
+
+        }
+        .btn-cart{
+            background-color: #C6CC4E;
+            color:white;
+            border:none;
+            font-weight: 900px;
+            width:100px;
+            height:50px;
+            border-radius:30px;
+        }
+        .card-body>h1{
+            font-size:20px;
+        }
+        .card-footer{
+             margin-left:40px;
+        }
+        .container{
+            background-color:#CAE09F;
+        }
+         .card1{
+            display:flex;
+            justify-content: space-around;
+            height:250px;
+        }
+        .card>social-media{
+            justify-content: space-around;
+        }
+        .social-media>a{
+            color:black;
+            text-decoration:none;
+            font-size: 20px;
+            font-weight: 900;
+        }
+        .social-media>a:hover{
+        }
+        .bottom{
+            height:50px;
+            background-color:#CAE09F;
+        }
+        .bottom>p{
+            position:relative;
+            top:10px;
+        }
+</style>
+</head>
+<body>
+    <nav class="nav">
+        <img src="logo.png" class="logo-img" alt="" width="350">
+        <a href="index.html" class="nav-item">Home </a>
+        <a href="about.html" class="nav-item">About Us </a>
+        <a href="awards.html" class="nav-item">Awards</a>
+        <a href="franchise.html" class="nav-item">Franchise</a>
+        <a href="#contact us" class="nav-item">Contact us</a>
+    </nav>
+    <h1 align="center"> MILLETS</h1>
+    <div class="menu">
+        <div class="card">
+            <div class="card-header">
+                <img src="img3.jpg"  alt="">
+            </div>
+            <div class="card-body">
+                <h1>Millet Porridge</h1>
+                <h3>Price: &#x20b9;150</h3>
+                <p>Millet porridge is a warm, creamy dish made from millet, a gluten-free ancient grain rich in nutrients.The porridge has a smooth texture and is similar to oatmeal  </p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-buy">Buy Now</button>
+                <button class="btn-cart">Add to cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img src="img4.jpg"  alt="">        
+            </div>
+            <div class="card-body">
+                <h1>Millet kambu</h1>
+                <h3>Price: &#x20b9;100</h3>
+                <p>Millet Kambu Sadham is a nutritious South Indian dish . It's a healthy alternative to rice, known for being rich in fiber, protein, and essential minerals.</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-buy">Buy Now</button>
+                <button class="btn-cart">Add to cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img src="img5.jpg"  alt="">
+            </div>
+            <div class="card-body">
+                <h1>Foxtail millet</h1>
+                <h3>Price: &#x20b9;150</h3>
+                <p> Foxtail Millet (known as Thinai in Tamil) is a small, nutritious, gluten-free grain that's rich in fiber, protein, and essential minerals like iron and magnesium .</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-buy">Buy Now</button>
+                <button class="btn-cart">Add to cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img src="img6.jpg"  alt="">
+            </div>
+            <div class="card-body">
+                <h1>Millet proso</h1>
+                <h3>Price: &#x20b9;110</h3>
+                <p>Proso Millet (also known as White Millet) is a small, round grain that is gluten-free and packed with essential nutrients .</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-buy">Buy Now</button>
+                <button class="btn-cart">Add to cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img src="img7.jpg"  alt="">
+            </div>
+            <div class="card-body">
+                <h1>Ragi Java</h1>
+                <h3>Price: &#x20b9;80</h3>
+                <p> Ragi Java is a nutritious and flavorful Indian dish made from ragi (finger millet), which is rich in calcium, iron, and fiber.</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-buy">Buy Now</button>
+                <button class="btn-cart">Add to cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img src="img8.jpg"  alt="">
+            </div>
+            <div class="card-body">
+                <h1>Ragi puttu</h1>
+                <h3>Price: &#x20b9;110</h3>
+                <p>Ragi Puttu is a traditional South Indian dish made from ragi flour, known for its rich nutritional value and delightful texture.</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-buy">Buy Now</button>
+                <button class="btn-cart">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <section id="contact us">
+        <footer>
+            <div class="container" width="1200px">
+                <div class="card1">
+                    <div class="social-media">
+                        <h2>Connect with us</h2>
+                        <a href="">
+                            <i class="fa-brands fa-square-instagram fa-2xl" width="50px" height="50px"></i>
+                        </a> &nbsp; &nbsp;
+                        <a href="">
+                            <i class="fa-brands fa-square-facebook fa-2xl" width="50px" height="50px"></i>
+                            &nbsp; &nbsp;
+                        </a>
+                        <a href="">
+                            <i class="fa-brands fa-square-twitter fa-2xl" width="50px" height="50px"></i>
+                        </a>
+                    </div>
+                        <div class="social-media">
+                            <h2>Contact Us</h2>
+                                    <a href="https://www.google.com/maps?ll=17.521395,78.346567&z=16&t=m&hl=en&gl=IN&mapclient=embed&q=Dr.Reddy%27s+Enclave+Miyapur,+Hyderabad,+Telangana+500049"><i class="fa-solid fa-location-dot"></i> Location</a>
+                                        <br><br>
+                                        <i class="fa-solid fa-phone"></i><strong> Phone: +91 995884665</strong>
+                                        <br><br>
+                                        <i class="fa-solid fa-envelope"></i><strong> MKGVP mitahara@gmail.com</strong>
+                                    </p>
+                        </div>
+                    <div class="social-media">
+                        <h2>Additional links</h2>
+                        <a href="salads.html">
+                            Salads</a>
+                            <br>
+                        <a href="millets2.html">
+                            Millets</a>
+                            <br>
+                        <a href="fruitbowl1.html">
+                            Fruitbowl</a>
+                            <br>
+                         <a href="oatmeal.html">
+                            Oatmeals</a>
+                    </div>
+                </div>
+            </div>
+            </footer>
+        <div class="bottom" align="center">
+            <p><strong>@copyrightsMKGVP</strong></p>
+        </div>
+    </section>
+</body>
+</html>
