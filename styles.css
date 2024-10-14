@@ -1,0 +1,120 @@
+*{
+    font-family:"Roboto";
+    
+}
+.nav{
+    background-color:#CAE09F;
+    font-size: x-large;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    position: sticky;
+    top:0px;
+    z-index:100;
+    margin-left: -20px;
+    margin-top: -10px;
+} 
+
+
+.nav-item{
+    text-decoration: none;
+    color: black;
+    margin-top: 35px;
+    padding: 15px;
+    margin-left: 60px;
+}
+.logo-img{
+    padding-right: 40px;
+}
+.oats_banner{
+    height: 200px;
+    width: 1200px;
+}
+
+.cat-flex{
+    display: flex;
+}
+
+.banner{
+    background-image: url('./images/banner1\ .jpg');
+    position:relative;
+    left:90px;
+    top:150px;
+    height: 600px;
+    width: 1300px;
+}
+
+
+@keyframes bannerimg
+{
+    0%{background-image: url('./images/oats_banner.jpg');}
+
+    50%{background-image: url('./images/banner1 .jpg');}
+
+    100%{background-image: url('./images/oats_banner.jpg');}
+}
+.why_us{
+    margin-top: 100px;
+}
+.why-text{
+    text-align: center;
+    font-weight: bold;
+}
+.why-content{
+    font-weight: 400; 
+}
+
+.certified{
+    padding-top: 40px;
+}
+
+.categories{
+    margin-top: -200px;
+    /* background-color: black; */
+}
+.image-categories{
+    border-radius:7px;
+    
+}
+.image-categories:hover{
+    box-shadow:3px 3px 3px 3px grey;
+    transform:translateY(-10px)
+}
+
+.cat-name{
+    text-decoration: none;
+    color:#31541E;
+    align-items: center;
+}
+
+a{
+    text-align: center;
+}
+footer{
+    background-color:#CAE09F;
+}
+.social-media>a{
+    font-weight: 900;
+    font-size: 20px;
+    text-decoration: none;
+    color:black;
+}
+.contact>a{
+    color:black;
+    text-decoration: none;
+}
+.additional>a{
+    font-weight: 900;
+    text-decoration: none;
+    color: black;
+    
+}
+.bottom{
+    height:50px;
+    background-color:#CAE09F;
+}
+.bottom>p{
+    position:relative;
+    top:10px;
+}
