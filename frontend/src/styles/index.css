@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* MITAHARA Centralized Design System CSS Variables */
+  --color-primary: #15803d;
+  --color-primary-hover: #166534;
+  --color-primary-light: #dcfce7;
+  --color-secondary: #d97706;
+  --color-secondary-hover: #b45309;
+  --color-secondary-light: #fef3c7;
+  --color-accent: #84cc16;
+  --color-accent-light: #ecfccb;
+  --color-background-warm: #fdfbf7;
+  --color-background-muted: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+  --card-shadow: 0 4px 20px -2px rgba(21, 128, 61, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-background-warm);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Crimson Text', Georgia, serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Product Card Micro-interactions */
+.mitahara-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mitahara-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -6px rgba(21, 128, 61, 0.12), 0 6px 12px -2px rgba(0, 0, 0, 0.05);
+  border-color: #bbf7d0;
+}
+
+/* Smooth Badge */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
