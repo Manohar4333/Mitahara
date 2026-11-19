@@ -1,8 +1,10 @@
+
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+
 import { ENV } from './config/env.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
 import { apiLimiter } from './middleware/rateLimitMiddleware.js';
@@ -19,7 +21,7 @@ import adminRoutes from './routes/adminRoutes.js';
 export const createApp = (): Application => {
   const app: Application = express();
 
-  // Security Headers with Helmet
+  // Security Headers
   app.use(
     helmet({
       crossOriginResourcePolicy: { policy: 'cross-origin' },
@@ -28,26 +30,40 @@ export const createApp = (): Application => {
   );
 
   // CORS Configuration
+  const allowedOrigins = [
+    ENV.FRONTEND_URL,
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://mitahara.online',
+  ].filter(Boolean);
+
   app.use(
     cors({
       origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps, curl, or dev proxy)
-        if (!origin) return callback(null, true);
-        const allowedOrigins = [
-          ENV.FRONTEND_URL,
-          'http://localhost:3000',
-          'http://127.0.0.1:3000',
-          'https://mitahara.online',
-        ];
-        if (allowedOrigins.includes(origin) || origin.endsWith('.localhost:3000')) {
-          callback(null, true);
-        } else {
-          callback(null, true); // Permissive in dev, or origin check
+        // Allow requests without an Origin header (e.g. server-to-server)
+        if (!origin) {
+          return callback(null, true);
         }
+
+        // Allow only configured frontend origins
+        if (
+          allowedOrigins.includes(origin) ||
+          (ENV.NODE_ENV !== 'production' &&
+            origin.endsWith('.localhost:3000'))
+        ) {
+          return callback(null, true);
+        }
+
+        return callback(new Error('Origin not allowed by CORS'));
       },
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Cookie'],
+      allowedHeaders: [
+        'Content-Type',
+        'Authorization',
+        'X-Requested-With',
+        'Cookie',
+      ],
     })
   );
 
@@ -56,24 +72,25 @@ export const createApp = (): Application => {
   app.use(express.urlencoded({ extended: true, limit: '10mb' }));
   app.use(cookieParser());
 
-  // Logging
+  // Request Logging
   if (ENV.NODE_ENV !== 'test') {
     app.use(morgan('dev'));
   }
 
-  // Rate Limiting on /api
+  // Rate Limiting
   app.use('/api', apiLimiter);
 
   // Health Check
   app.get('/health', (req: Request, res: Response) => {
     res.status(200).json({
+      success: true,
       status: 'healthy',
       app: 'MITAHARA E-Commerce API',
       timestamp: new Date().toISOString(),
     });
   });
 
-  // API v1 Routes
+  // API Version 1 Routes
   app.use('/api/v1/auth', authRoutes);
   app.use('/api/v1/products', productRoutes);
   app.use('/api/v1/categories', categoryRoutes);
@@ -91,7 +108,7 @@ export const createApp = (): Application => {
     });
   });
 
-  // Centralized Error Handling Middleware
+  // Centralized Error Handling
   app.use(errorHandler);
 
   return app;

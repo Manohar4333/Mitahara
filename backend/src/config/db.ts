@@ -1,49 +1,38 @@
+
 import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
 import { ENV } from './env.js';
 
-let mongoMemoryServer: MongoMemoryServer | null = null;
+let connectionPromise: Promise<typeof mongoose> | null = null;
 
 export const connectDB = async (): Promise<void> => {
+  if (mongoose.connection.readyState === 1) {
+    return;
+  }
+
+  if (!ENV.MONGO_URI || !ENV.MONGO_URI.trim()) {
+    throw new Error('MONGO_URI is missing. Configure MongoDB Atlas.');
+  }
+
+  if (!connectionPromise) {
+    connectionPromise = mongoose.connect(ENV.MONGO_URI, {
+      serverSelectionTimeoutMS: 10000,
+      maxPoolSize: 10,
+    }).catch((error) => {
+      connectionPromise = null;
+      throw error;
+    });
+  }
+
   try {
-    let uri = ENV.MONGO_URI;
-
-    if (uri && uri.trim() !== '') {
-      console.log('Connecting to provided MongoDB URI...');
-      await mongoose.connect(uri);
-      console.log('Connected to MongoDB successfully.');
-      return;
-    }
-
-    console.log('No MONGO_URI provided in environment. Starting embedded MongoDB Memory Server for seamless development/testing...');
-    mongoMemoryServer = await MongoMemoryServer.create();
-    uri = mongoMemoryServer.getUri();
-    await mongoose.connect(uri);
-    console.log(`Connected to Embedded MongoDB at: ${uri}`);
+    await connectionPromise;
+    console.log('MITAHARA MongoDB Atlas connected successfully.');
   } catch (error) {
-    console.error('Failed to connect to MongoDB with primary URI:', error);
-    try {
-      if (!mongoMemoryServer) {
-        console.log('Falling back to embedded MongoDB Memory Server...');
-        mongoMemoryServer = await MongoMemoryServer.create();
-        const fallbackUri = mongoMemoryServer.getUri();
-        await mongoose.connect(fallbackUri);
-        console.log(`Connected to Fallback Embedded MongoDB at: ${fallbackUri}`);
-      }
-    } catch (fallbackError) {
-      console.error('Critical: Could not connect to any MongoDB instance:', fallbackError);
-      process.exit(1);
-    }
+    console.error('MongoDB connection failed:', error);
+    throw error;
   }
 };
 
 export const disconnectDB = async (): Promise<void> => {
-  try {
-    await mongoose.disconnect();
-    if (mongoMemoryServer) {
-      await mongoMemoryServer.stop();
-    }
-  } catch (err) {
-    console.error('Error during MongoDB disconnect:', err);
-  }
+  await mongoose.disconnect();
+  connectionPromise = null;
 };
